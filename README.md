@@ -37,7 +37,7 @@ If the root certificate cannot be found in Java's keystore (cacerts), a message 
 certificate name: 
 
 ```
-ussacwikjm4:libs cwikj$ java -jar ssl-certificate-extractor.jar -connect www.google.com:443 
+$ java -jar ssl-certificate-extractor.jar -connect www.google.com:443 
 Loading Java's root certificates...
 Connecting to www.google.com:443
 Connected? true
