@@ -126,7 +126,7 @@ public class SSLCertificateExtractor {
             os.close();
             s.close();
 
-            printMessage("The server sent " + certsSent + " certificates");
+            printMessage(String.format("The server sent %d certificates", certsSent));
 
             printMessage("The root certificate appears to be " + lastIssuer.getName());
 
@@ -138,7 +138,7 @@ public class SSLCertificateExtractor {
                     rootCert = lastCert;
                     X509Certificate anchor = findAnchor(anchors, lastIssuer);
                     printMessage(String.format("NOTE: When using self-signed certificates, the application will need " +
-                                "to trust this certificate.  The Java VM running this program {0} trust it.",
+                                "to trust this certificate.  The Java VM running this program %s trust it.",
                             anchor == null?"DOES NOT":"DOES"));
                 } else {
                     printMessage("It appears that the server did send us the root certificate (not typical)");
@@ -168,7 +168,7 @@ public class SSLCertificateExtractor {
                                     "the certificate you passed to verify does not appear to match the required " +
                                     "root certificate.");
 
-                            printMessage(String.format("Your certificate: {0}\nRequired root: {1]",
+                            printMessage(String.format("Your certificate: %s\nRequired root: %s",
                                     certToVerify.getSubjectDN(), rootCert.getSubjectDN()));
                             System.exit(EXIT_CERT_MISMATCH);
                         }
@@ -297,7 +297,7 @@ public class SSLCertificateExtractor {
                 // Check to make sure chain is okay
                 if(lastIssuer != null && !cert.getSubjectDN().equals(lastIssuer)) {
                     printMessage("ERROR: the certificate chain returned from the server looks incorrect.  The previous certificate's issuer does not match this certificate's subject!");
-                    printMessage(String.format("  expected: {0}\n  but found: {1}", lastIssuer, cert.getSubjectDN()));
+                    printMessage(String.format("  expected: %s\n  but found: %s", lastIssuer, cert.getSubjectDN()));
                     badChain = true;
                 }
 
