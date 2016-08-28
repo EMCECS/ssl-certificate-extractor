@@ -34,7 +34,7 @@ public class SSLCertificateExtractor {
 
     public static final String ARG_SILENT = "silent";
     public static final String ARG_CONNECT = "connect";
-    public static final String ARG_VERIFY = "verify-root";
+    public static final String ARG_VERIFY = "verify";
 
     public static void main(String[] args) {
         Options opts = new Options();
